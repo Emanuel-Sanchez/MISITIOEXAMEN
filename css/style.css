@@ -1,0 +1,813 @@
+/* Estilos generales del body */
+body {
+    font-family: 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    color: #333; /* Texto más suave para la legibilidad sobre el fondo */
+    background-color: #000; /* Fondo base negro */
+}
+
+/* Estilos para el encabezado (header) */
+header {
+    background-color: rgba(51, 51, 51, 0.5); /* Fondo semitransparente oscuro */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+header .logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+header .logo-container img {
+    height: 80px;
+    /* Asegúrate de que la ruta de esta imagen sea correcta */
+    /* src="dcc11b646cda1d1730e5da82bcdc0848_480x480_fit.png" en HTML */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2em; /* Un poco más grande para el título principal */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para mejor visibilidad */
+}
+
+/* Estilos para la barra de navegación (nav) */
+nav {
+    background-color: rgba(0, 0, 0, 0.75); /* Fondo negro semitransparente más estético */
+    color: #fff;
+    padding: 20px 0; /* Padding vertical, 0 horizontal para que los items lo controlen */
+    width: 220px; /* Un poco más de ancho para los botones */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5); /* Sombra para darle profundidad */
+    max-height: 100vh; /* Asegura que la altura máxima sea la altura de la ventana */
+    overflow-y: auto; /* Muestra la barra de desplazamiento vertical si el contenido excede la altura */
+}
+
+nav h2 {
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 25px; /* Más espacio */
+    font-size: 1.8em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 90%; /* Ocupa casi todo el ancho para los botones */
+}
+
+nav ul li {
+    margin-bottom: 12px; /* Margen uniforme entre todos los ítems */
+}
+
+nav ul li a {
+    display: block;
+    color: #fff; /* Texto blanco en los enlaces del menú */
+    text-decoration: none;
+    padding: 12px 15px; /* Más padding para que los botones sean más grandes */
+    border-radius: 8px; /* Bordes más redondeados */
+    background-color: rgba(255, 255, 255, 0.15); /* Fondo ligeramente transparente y más claro */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición para hover */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde blanco sutil */
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: bold; /* Texto en negrita */
+    letter-spacing: 0.5px; /* Espaciado entre letras */
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo más opaco al pasar el ratón */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra al pasar el ratón */
+}
+
+/* Estilos para el contenedor del logo dentro del nav */
+nav .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px; /* Más espacio */
+    width: 100%;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+nav .logo-container img {
+    height: auto;
+    max-height: 120px; /* Un poco más pequeño el logo del menú */
+    width: auto;
+    display: block;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón desplegable (CSS-only) */
+.dropdown {
+    position: relative; /* Necesario para posicionar el contenido desplegable */
+    width: 100%;
+    margin-bottom: 12px; /* Margen como los otros li */
+    box-sizing: border-box;
+}
+
+.dropdown-btn {
+    display: flex;
+    justify-content: center; /* Centra el texto */
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    position: relative; /* Necesario para posicionar la flecha pseudo-elemento */
+}
+
+/* Pseudo-elemento para la flecha, solo con CSS */
+.dropdown-btn::after {
+    content: '\25BC'; /* Código Unicode para una flecha hacia abajo (▼) */
+    font-size: 0.8em;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Cambia la flecha cuando el mouse está sobre el botón */
+.dropdown:hover .dropdown-btn::after {
+    transform: rotate(180deg); /* Rota la flecha hacia arriba al hacer hover */
+}
+
+.dropdown-content {
+    display: none; /* Oculto por defecto */
+    position: absolute; /* Posicionado sobre el menú */
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco semitransparente para el desplegable */
+    min-width: 100%; /* Ocupa el mismo ancho que el botón */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 8px;
+    padding: 10px 0; /* Padding interno */
+    margin-top: 5px; /* Espacio entre el botón y el contenido */
+    left: 0; /* Asegura que se alinee con el botón */
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Muestra el contenido desplegable al hacer hover sobre el elemento principal (li.dropdown) */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #333; /* Texto oscuro para los enlaces del desplegable */
+    padding: 12px 15px;
+    text-decoration: none;
+    display: block;
+    text-align: left; /* Alineado a la izquierda para los sub-ítems */
+    transition: background-color 0.2s ease;
+    border-radius: 0; /* Sin bordes redondeados específicos aquí */
+    background-color: transparent; /* Sin fondo transparente de los otros botones */
+    border: none; /* Sin borde */
+    font-weight: normal; /* Texto normal, no negrita */
+}
+
+.dropdown-content a:hover {
+    background-color: #e0e0e0; /* Fondo gris claro al pasar el ratón */
+    transform: none; /* Quitar la transformación al pasar el ratón */
+    box-shadow: none; /* Quitar sombra */
+}
+
+
+/* Estilos para el contenedor principal del contenido */
+main {
+    padding: 20px;
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.85); /* Fondo semitransparente más opaco para el contenido */
+    color: #333; /* Texto más oscuro para el contenido */
+    margin-left: 220px; /* Espacio para la barra de navegación fija */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+    min-height: calc(100vh - 60px); /* Ajusta para el tamaño del header y footer */
+    border-left: 1px solid rgba(0,0,0,0.1); /* Borde sutil a la izquierda del contenido */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2); /* Sombra para separar del nav */
+
+    background-image: url('arton79216.jpg'); /* Imagen de fondo para el contenido principal */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-blend-mode: overlay; /* Mezcla el fondo blanco semitransparente con la imagen */
+}
+
+/* Estilos para las secciones dentro de main */
+main > section {
+    width: 100%;
+    margin-bottom: 25px; /* Un poco más de margen */
+    padding: 15px; /* Añade un poco de padding dentro de las secciones */
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo ligeramente transparente para las secciones */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave para las secciones */
+    box-sizing: border-box;
+}
+
+main > section:last-child {
+    margin-bottom: 40px;
+}
+
+/* Estilos para los títulos dentro de main */
+main h1 {
+    color: #222; /* Tono más oscuro para el h1 */
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 2.5em; /* Título más grande */
+    margin-bottom: 30px; /* Más espacio */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+main h2 {
+    color: #444; /* Tono de gris para el h2 general */
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+/* Estilos para los párrafos dentro de main */
+main p {
+    line-height: 1.7; /* Mayor interlineado para legibilidad */
+    text-align: justify;
+    color: #333; /* Texto más suave */
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1.1em; /* Texto un poco más grande */
+}
+
+/* Estilos para las listas dentro de main */
+main ul {
+    list-style: disc; /* Vuelvo a los puntos de lista predeterminados para el contenido */
+    padding-left: 20px; /* Padding para que los puntos sean visibles */
+    line-height: 1.7;
+    text-align: justify;
+    color: #333;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1.1em;
+}
+
+main li {
+    margin-bottom: 10px; /* Menor margen para los ítems de lista normal */
+    padding-bottom: 0; /* Sin padding inferior para ítems de lista normal */
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Estilos específicos para la lista de personajes clave (personajes múltiples en una sola página) */
+#personajes-clave ul {
+    list-style: none; /* Quitamos los puntos de lista para esta sección específica */
+    padding-left: 0;
+}
+
+#personajes-clave ul li {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px; /* Un poco más de margen */
+    padding-bottom: 15px;
+}
+
+#personajes-clave ul li:last-child {
+    border-bottom: none;
+}
+
+li.personaje {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.85); /* Fondo para cada personaje */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+li.personaje img {
+    width: 100px; /* Un poco más pequeño */
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px; /* Más espacio */
+    object-fit: cover;
+    border: 3px solid #666; /* Borde al rededor de la imagen */
+}
+
+.personaje-info {
+    flex-grow: 1;
+}
+
+.personaje-info h3 {
+    margin-top: 0;
+    margin-bottom: 8px; /* Más espacio */
+    color: #1a1a1a; /* Tono más oscuro */
+    font-size: 1.3em;
+}
+
+.personaje-info p {
+    margin-bottom: 0; /* Sin margen inferior */
+    font-size: 0.95em;
+    color: #555;
+}
+
+
+/* --- Estilos para la página de detalle de personaje (e.g., Isoroku Yamamoto) --- */
+
+/* Estilo para el título de categoría (similar a "Aliados" en tu ejemplo) */
+.category-title {
+    font-size: 2.8em; /* Un poco más grande que los h1 normales de main */
+    color: #444; /* Un gris oscuro */
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ccc; /* Una línea sutil debajo del título */
+    width: 80%; /* Ancho controlado */
+    max-width: 600px; /* Ancho máximo para el título */
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Contenedor principal de la tarjeta del personaje */
+.personaje-card {
+    display: flex;
+    align-items: flex-start; /* Alinea los ítems al inicio del contenedor */
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco casi opaco para la tarjeta */
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Sombra suave pero prominente */
+    padding: 25px; /* Más padding interno */
+    margin: 30px auto; /* Centra la tarjeta y da margen */
+    max-width: 800px; /* Ancho máximo para la tarjeta */
+    width: 90%; /* Ancho responsivo */
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.personaje-card:hover {
+    transform: translateY(-5px); /* Pequeño efecto de elevación al pasar el ratón */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Sombra más intensa al pasar el ratón */
+}
+
+/* Imagen del personaje dentro de la tarjeta */
+.personaje-image {
+    width: 160px; /* Tamaño más grande para la imagen */
+    height: 160px;
+    border-radius: 50%; /* Completamente circular */
+    margin-right: 30px; /* Más espacio a la derecha de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    border: 4px solid #666; /* Borde más pronunciado y oscuro */
+    flex-shrink: 0; /* Evita que la imagen se encoja en pantallas pequeñas */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Sombra para la imagen */
+}
+
+/* Contenedor del texto de la información del personaje */
+.personaje-info-detail {
+    flex-grow: 1; /* Permite que el texto ocupe el espacio restante */
+}
+
+/* Nombre del personaje */
+.personaje-name {
+    margin-top: 0;
+    margin-bottom: 15px; /* Más espacio debajo del nombre */
+    color: #1a1a1a; /* Color de texto muy oscuro */
+    font-size: 2em; /* Tamaño de fuente más grande para el nombre */
+    text-align: left; /* Alinea el nombre a la izquierda */
+}
+
+/* Descripción del personaje */
+.personaje-description {
+    line-height: 1.8; /* Interlineado más generoso para la legibilidad */
+    text-align: justify; /* Texto justificado */
+    color: #333; /* Color de texto estándar */
+    font-size: 1.15em; /* Tamaño de fuente ligeramente más grande */
+}
+
+
+/* Estilos para el formulario general */
+form {
+    background-color: rgba(0, 0, 0, 0.75); /* Fondo oscuro semitransparente */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.15); /* Sombra clara para destacar sobre el fondo oscuro */
+    max-width: 550px;
+    padding: 25px;
+    width: 100%;
+    margin: 20px auto;
+    box-sizing: border-box;
+    color: #eee; /* Color de texto claro por defecto para el formulario */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #eee; /* Color de texto claro para los labels */
+    font-size: 1.1em;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #ccc; /* Color de placeholder más claro */
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 12px;
+    border: 1px solid #555; /* Borde más oscuro */
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    background-color: #333; /* Fondo oscuro para los inputs/select/textarea */
+    color: #eee; /* Texto claro dentro de los inputs/select/textarea */
+}
+
+select {
+    background-color: #333;
+    color: #eee;
+}
+
+/* Estilo para las opciones del select (puede depender del navegador) */
+select option {
+    background-color: #333;
+    color: #eee;
+}
+
+/* Estilos específicos para los checkboxes de marketing */
+.marketing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-bottom: 18px;
+}
+
+.marketing input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+    margin-bottom: 0;
+}
+
+.marketing label {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    color: #eee; /* Texto claro para los checkboxes */
+}
+
+/* Estilo para el checkbox de RGPD y su label */
+.rgpd {
+    display: inline-block;
+    font-size: 0.95em;
+    color: #eee; /* Texto claro para RGPD */
+    margin-bottom: 18px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.rgpd a {
+    color: #88c8ff; /* Un azul más claro para el enlace sobre fondo oscuro */
+    text-decoration: none;
+}
+
+.rgpd a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #007bff; /* Un azul más llamativo */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Un azul más oscuro al pasar el ratón */
+    transform: translateY(-1px);
+}
+
+/* Estilos para el pie de página (footer) */
+footer {
+    background-color: rgba(51, 51, 51, 0.85); /* Fondo más opaco */
+    color: #fff;
+    padding: 15px; /* Más padding */
+    text-align: center;
+    width: 100%;
+    z-index: 100;
+    margin-top: auto;
+    box-sizing: border-box;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.3); /* Sombra superior */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Apila los elementos en pantallas pequeñas */
+        align-items: stretch; /* Estira los elementos para ocupar el ancho */
+    }
+
+    /* La barra de navegación se oculta en esta página en móvil (si se eliminó del HTML) */
+    /* Pero si está en otras páginas, se convierte en horizontal */
+    nav {
+        width: 100%;
+        min-height: auto;
+        flex-direction: row; /* Muestra el menú horizontalmente */
+        align-items: center;
+        justify-content: space-around; /* Distribuye el espacio entre los elementos del menú */
+        padding: 10px;
+        flex-wrap: wrap; /* Permite que los elementos del menú se envuelvan */
+        position: static; /* La barra de navegación fluye con el contenido */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Sombra inferior */
+        max-height: none; /* Elimina la altura máxima para que fluya en móvil */
+        overflow-y: visible; /* Asegura que el scroll no interfiera en móvil si el nav es horizontal */
+    }
+
+    nav .logo-container {
+        flex-basis: 100%; /* El logo ocupa todo el ancho en pantallas pequeñas */
+        margin-bottom: 10px;
+        padding-top: 0;
+        align-items: center;
+    }
+
+    nav h2 {
+        display: none; /* Oculta el título "Menú" en móvil si no es necesario */
+    }
+
+    nav ul {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        padding: 0;
+        margin-top: 10px;
+        flex-wrap: wrap; /* Permitir que los ítems se envuelvan en pantallas pequeñas */
+    }
+
+    nav ul li {
+        margin-bottom: 8px; /* Reducir margen en móviles */
+        flex-basis: 48%; /* Dos columnas en móvil */
+        text-align: center;
+    }
+
+    nav ul li a {
+        padding: 10px 5px; /* Menos padding en móviles */
+        font-size: 0.9em;
+    }
+
+    .dropdown .dropdown-content {
+        position: static; /* No flotar en móvil, se integra en el flujo */
+        width: 100%;
+        background-color: transparent; /* No fondo extra */
+        box-shadow: none;
+        border: none;
+        padding: 0;
+    }
+
+    main {
+        align-items: stretch; /* Estira el contenido principal */
+        align-items: flex-start; /* Alinea el contenido al inicio en pantallas pequeñas */
+        margin-left: 0; /* Elimina el margen para la barra lateral */
+        background-color: rgba(255, 255, 255, 0.9); /* Un poco más opaco en móvil para asegurar legibilidad sobre la imagen */
+        background-blend-mode: normal; /* Deshacer el modo de mezcla si no funciona bien en móvil */
+    }
+
+    main > section {
+        width: 98%; /* Ocupa casi todo el ancho */
+        padding: 10px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    /* Media Queries para responsividad de la tarjeta de personaje */
+    .category-title {
+        font-size: 2em;
+        margin-top: 20px;
+        margin-bottom: 25px;
+        width: 90%;
+    }
+
+    .personaje-card {
+        flex-direction: column; /* Apila la imagen y el texto en pantallas pequeñas */
+        align-items: center; /* Centra los elementos apilados */
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .personaje-image {
+        margin-right: 0; /* Elimina el margen derecho */
+        margin-bottom: 20px; /* Añade margen inferior */
+        width: 120px; /* Tamaño más pequeño en móvil */
+        height: 120px;
+    }
+
+    .personaje-name {
+        text-align: center; /* Centra el nombre en pantallas pequeñas */
+        font-size: 1.7em;
+        margin-bottom: 10px;
+    }
+
+    .personaje-description {
+        text-align: left; /* Mantiene justificado o a la izquierda */
+        font-size: 1em;
+    }
+
+    /* Ajustes específicos para móviles para el formulario (cuando nav no está) */
+    .body-form main {
+        margin-left: 0; /* Asegurar que no haya margen en móvil */
+        min-height: calc(100vh - 100px); /* Ajustar altura para móvil */
+        padding: 10px; /* Menos padding en móvil */
+    }
+
+    .body-form main form {
+        width: 95%; /* Ocupar más ancho en móvil */
+        padding: 15px; /* Menos padding */
+    }
+}
+
+/* Estilos para tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: 'Times New Roman', serif;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo ligeramente transparente */
+    border-radius: 8px;
+    overflow: hidden; /* Para que los bordes redondeados se apliquen bien */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+    border: 1px solid #ddd; /* Borde más suave */
+    padding: 10px; /* Más padding */
+    text-align: left;
+    font-family: 'Times New Roman', serif;
+    text-align: justify;
+    color: #333;
+}
+
+th {
+    background-color: #f8f8f8; /* Fondo más claro para los encabezados */
+    font-weight: bold;
+    color: #555;
+}
+
+/* --- ESTILOS PARA EL MODAL DE INICIO DE SESIÓN --- */
+.modal {
+    display: none; /* Oculto por defecto, se mostrará con JavaScript si lo implementas */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8); /* Fondo más oscuro */
+    display: flex; /* Usamos flexbox para centrar el contenido */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 40px; /* Más padding */
+    border: 1px solid #888;
+    width: 85%; /* Más ancho */
+    max-width: 450px; /* Más grande */
+    border-radius: 12px; /* Más redondeado */
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4); /* Sombra más prominente */
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 30px; /* Más espacio */
+    color: #222; /* Más oscuro */
+    font-size: 1.8em;
+}
+
+.modal-content form {
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-content label {
+    text-align: left;
+    margin-bottom: 10px; /* Más espacio */
+    font-size: 1.1em;
+}
+
+.modal-content input[type="email"],
+.modal-content input[type="password"] {
+    margin-bottom: 25px; /* Más espacio */
+    padding: 14px; /* Más padding */
+    border: 1px solid #bbb; /* Borde más suave */
+    border-radius: 6px;
+    font-size: 1.1em;
+}
+
+.modal-content button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 14px 25px; /* Más padding */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-content button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+/* Estilos para el botón de cerrar */
+.close-button {
+    color: #777; /* Color más suave */
+    position: absolute;
+    top: 15px; /* Más abajo */
+    right: 25px; /* Más a la derecha */
+    font-size: 32px; /* Más grande */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333; /* Más oscuro al pasar el ratón */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* --- ESTILOS ESPECÍFICOS PARA LA PÁGINA DE FORMULARIO CON ESTÉTICA COMPLETA Y SIN NAV --- */
+/* Cuando el body tiene la clase 'body-form', queremos la estética del sitio */
+.body-form main {
+    margin-left: 0; /* No hay barra de navegación fija en esta página, así que no hay margen */
+    max-width: 800px; /* Ajusta el ancho máximo del contenido */
+    margin-right: auto;
+    margin-left: auto; /* Centra el main si no hay nav */
+    display: flex; /* Para centrar el formulario dentro del main */
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    min-height: calc(100vh - 100px); /* Ajusta la altura para que el footer no se pegue */
+    
+    background-image: url('arton79216.jpg'); /* Mantiene la imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-blend-mode: overlay; /* Mantiene el modo de mezcla para el efecto visual */
+}
+
+/* Asegura que el header y el footer se muestren en la página del formulario */
+.body-form header,
+.body-form footer {
+    display: block !important; /* Forzar que se muestren si previamente se ocultaron */
+}
+
+/* Opcional: ajustar el formulario dentro del main */
+.body-form main form {
+    margin: 20px auto; /* Centra el formulario dentro del área de contenido del main */
+    max-width: 550px; /* Mantiene el ancho máximo del formulario */
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.75); /* Fondo oscuro semitransparente para el formulario */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.15); /* Sombra clara para el formulario */
+}
